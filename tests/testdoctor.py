@@ -5,7 +5,7 @@ from src.doctor import Doctor
 class TestDoctor(unittest.TestCase):
 
     @classmethod
-    def setUpClass(cls) -> None:
+    def setUp(cls) -> None:
         cls.doctor = False
 
     def test_case01(self):
