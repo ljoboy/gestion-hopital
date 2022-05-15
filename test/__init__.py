@@ -1,1 +1,1 @@
-all = ['doctor_test_module', 'patient_test_module']
+# all = ["doctor_test_module", "patient_test_module"]
