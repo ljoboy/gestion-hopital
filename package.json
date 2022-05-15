@@ -1,0 +1,14 @@
+{
+  "name": "hospital-management",
+  "version": "1.0.0",
+  "description": "Un hopital veut migrer son système de gestion vers une application en python.\r Il vous est demandé de créer une application pour les aider dans leurs taches quotidiennes :\r  - Enregistrer un docteur : nom, prenom, postnom, téléphone, matricule, spécialisation (ex: pédiatre, gynecologue, etc.)\r  - Enregistrer un patient : nom, prenom, postnom, téléphone, poids, taille, genre, age, numero de dossier (un code unique que vous allez généré)\r  - Générer un numero de dossier \"unique\"\r  - Chercher un patient par ses identités (nom, postnom ou prénom) et on nous retourne la liste des utilisateurs ayants ces informations\r  - Chercher un patient par le numero de dossier et on retourne le seul patient ayant ce numero\r  - Afficher tous les patients\r  - Afficher tous les docteurs\r  - Enregistrer plaintes patient (ex: maux de tete, maux de ventre, etc)\r  - Enregistrer l'horaire de chaque medecin (pour une semaine)\r  - Vérifier disponibilité d'un medecin (Ajouter un rendez-vous à son horaire)\r  - Afficher les plaintes d'un patient à partir de son numero unique\r  - Afficher l'IMC (indice de masse corporel) d'un patient par à partir de son numero [IMC = poids (kg) / taille (m²)].\r    - moins de 18,5\tInsuffisance pondérale (maigreur)\r    - 18,5 à 25\tCorpulence normale\r    - 25 à 30\tSurpoids\r    - 30 à 35\tObésité modérée\r    - 35 à 40\tObésité sévère\r    - plus de 40\tObésité morbide ou massive",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "serve:test": "allure serve tests/reports/tests-report"
+  },
+  "author": "Dark Angel <jonathanyombo@gmail.com>",
+  "license": "ISC"
+}
