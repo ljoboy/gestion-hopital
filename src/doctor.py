@@ -3,12 +3,20 @@ import unittest
 
 class Doctor:
     """
-    Class constructor
+    Class representing a doctor
+    constructor with some params
+        nom: str,
+        prenom: str,
+        postnom: str,
+        phone: str,
     """
-    def __int__(self, nom: str, prenom: str, postnom: str, phone: str, specialisation: str = "", matricule: str = ""):
+    _matricule: str
+
+    def __init__(self, nom: str, prenom: str, postnom: str, phone: str):
+        if not str.isalnum(nom) or not str.isalnum(prenom) or not str.isalnum(postnom) or not str.isalnum(phone):
+            raise TypeError
         self._nom = nom
         self._prenom = prenom
         self._postnom = postnom
         self._phone = phone
-        self._matricule = matricule
-        self._specialisation = specialisation
+
