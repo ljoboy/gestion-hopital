@@ -17,6 +17,13 @@ class Doctor:
     __i = 1
 
     def __init__(self, nom: str, prenom: str, postnom: str, phone: str) -> None:
+        """
+
+        :param nom:
+        :param prenom:
+        :param postnom:
+        :param phone:
+        """
         tel = re.fullmatch(r"^[0|+]\d{9,}", phone)
         if not str.isalnum(nom) or not str.isalnum(prenom) or not str.isalnum(postnom) \
                 or len(phone) < 10 or not isinstance(tel, re.Match):
@@ -31,11 +38,32 @@ class Doctor:
         self.__class__.__i += 1
 
     @property
+    def nom(self) -> str:
+        return self.__nom
+
+    @property
+    def prenom(self) -> str:
+        return self.__prenom
+
+    @property
+    def postnom(self) -> str:
+        return self.__postnom
+
+    @property
+    def phone(self) -> str:
+        return self.__phone
+
+    @property
     def specialization(self) -> list:
         return self.__specialization
 
     @specialization.setter
     def specialization(self, value: [str]) -> None:
+        """
+
+        :param value:
+        :return:
+        """
         if isinstance(value, list):
             for val in value:
                 if not isinstance(val, str):
@@ -54,6 +82,7 @@ class Doctor:
     def __matricule_generator(self) -> str:
         """
         method to generate a matricule
+        :return:
         """
         mat = str(datetime.datetime.now().year)[-2:]
         s = str(self.__i)

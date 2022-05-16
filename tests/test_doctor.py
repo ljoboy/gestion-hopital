@@ -109,6 +109,9 @@ class TestDoctor:
         # The below value when (all test) or the other one when (this test) it's launched
         assert (d1.matricule == '22WT010') or (d1.matricule == '22WT001')
 
+    def test_case07(self, doctor):
+        assert [doctor.nom, doctor.prenom, doctor.postnom, doctor.phone] == ["nom", "prenom", "postnom", "+1234567890"]
+
 
 if __name__ == '__main__':
     pytest.testmod()
