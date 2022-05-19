@@ -1,4 +1,5 @@
 import datetime
+import random
 import re
 
 
@@ -18,9 +19,8 @@ class Patient:
         # TODO change this (if) to assert
         phone_verif = re.fullmatch(r"[+|0]\d{9,}", phone)
         dob_verified = datetime.date.fromisoformat(dob)
-        if not isinstance(nom, str) or not isinstance(prenom, str) or not isinstance(postnom, str) or \
-                not isinstance(phone, str) or not isinstance(dob, str) or not isinstance(phone_verif, re.Match) or \
-                not isinstance(dob_verified, datetime.date) or not isinstance(genre, str):
+        if not nom.isalnum() or not prenom.isalnum() or not postnom.isalnum() or not isinstance(phone_verif, re.Match) \
+                or not isinstance(dob_verified, datetime.date) or not genre.isalnum():
             raise TypeError
         if genre.lower() not in ["m", "f"]:
             raise ValueError
@@ -30,6 +30,7 @@ class Patient:
         self.__genre = genre.lower()
         self.__phone = phone
         self.__dob = dob_verified
+        self.__num_dossier = self.__num_dossier_generator()
 
     @property
     def nom(self) -> str:
@@ -63,3 +64,15 @@ class Patient:
     def age(self) -> int:
         return datetime.date.today().year - self.dob.year
 
+    def __num_dossier_generator(self) -> str:
+        voyelles = "AEUIOY"
+        num_dossier = ""
+        for lettre in self.nom:
+            if lettre not in voyelles:
+                num_dossier += lettre
+        num_dossier += str(random.randint(0, 9999)).zfill(4)
+        return num_dossier
+
+    @property
+    def num_dossier(self) -> str:
+        return self.__num_dossier

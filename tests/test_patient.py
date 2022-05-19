@@ -19,17 +19,17 @@ class TestPatient:
 
     def test_case01_01(self):
         """Test to instantiate with bad params"""
-        with pytest.raises(TypeError):
+        with pytest.raises(AttributeError):
             patient = Patient(1, "prenom", "postnom", "+1234567890", "1994-10-17", "m")
 
     def test_case01_02(self):
         """Test to instantiate with bad params"""
-        with pytest.raises(TypeError):
+        with pytest.raises(AttributeError):
             patient = Patient("nom", 2.3, "postnom", "+1234567890", "1994-10-17", "m")
 
     def test_case01_03(self):
         """Test to instantiate with bad params"""
-        with pytest.raises(TypeError):
+        with pytest.raises(AttributeError):
             patient = Patient("nom", "prenom", True, "+1234567890", "1994-10-17", "m")
 
     def test_case01_04(self):
@@ -59,7 +59,7 @@ class TestPatient:
 
     def test_case01_08(self):
         """Test to instantiate with bad params"""
-        with pytest.raises(TypeError):
+        with pytest.raises(AttributeError):
             patient = Patient("nom", "prenom", "postnom", "+1234567890", "1994-10-17", 9)
 
     def test_case01_09(self):
@@ -80,6 +80,10 @@ class TestPatient:
         """Test if nom_complet property it's working"""
         assert isinstance(patient.nom_complet, str) and patient.nom_complet == (
                     patient.nom.upper() + " " + patient.postnom.upper() + " " + patient.prenom.capitalize())
+
+    def test_a_numdossier(self, patient):
+        """Test if num_dossier it's generated"""
+        assert patient.num_dossier.startswith("NM")
 
 
 if __name__ == '__main__':
