@@ -24,6 +24,7 @@ class Doctor:
         :param postnom:
         :param phone:
         """
+        # TODO change this (if) to assert
         tel = re.fullmatch(r"^[0|+]\d{9,}", phone)
         if not str.isalnum(nom) or not str.isalnum(prenom) or not str.isalnum(postnom) \
                 or len(phone) < 10 or not isinstance(tel, re.Match):
