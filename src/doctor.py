@@ -25,6 +25,7 @@ class Doctor:
         :param phone:
         """
         # TODO change this (if) to assert
+        # TODO change str.isalnum(x) to x.isalnum()
         tel = re.fullmatch(r"^[0|+]\d{9,}", phone)
         if not str.isalnum(nom) or not str.isalnum(prenom) or not str.isalnum(postnom) \
                 or len(phone) < 10 or not isinstance(tel, re.Match):
@@ -86,7 +87,5 @@ class Doctor:
         :return:
         """
         mat = str(datetime.datetime.now().year)[-2:]
-        s = str(self.__i)
-        s = ("0" * (3 - len(s))) + s
-        mat += self.__nom[0].upper() + self.__postnom[0].upper() + s
+        mat += self.__nom[0].upper() + self.__postnom[0].upper() + str(self.__i).zfill(3)
         return mat
