@@ -85,6 +85,21 @@ class TestPatient:
         """Test if num_dossier it's generated"""
         assert patient.num_dossier.startswith("NM")
 
+    def test_mesures_patient(self, patient):
+        patient.mesures(72, 182)
+        assert patient.taille == 182 and patient.poids == 72
+
+    def test_mesures_taille_not_numeric(self, patient):
+        with pytest.raises(TypeError):
+            patient.mesures("98.08", 9)
+
+    def test_mesures_poids_not_integer(self, patient):
+        with pytest.raises(TypeError):
+            patient.mesures(98, 9.8)
+
+    def test_phone_property(self, patient):
+        assert patient.phone == "+1234567890"
+
 
 if __name__ == '__main__':
     pytest.testmod()
