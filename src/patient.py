@@ -55,3 +55,11 @@ class Patient:
     def genre(self) -> str:
         return self.__genre
 
+    @property
+    def nom_complet(self) -> str:
+        return f"{self.nom} {self.postnom} {self.prenom}"
+
+    @property
+    def age(self) -> int:
+        return datetime.date.today().year - self.dob.year
+
