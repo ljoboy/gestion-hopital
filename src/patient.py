@@ -31,6 +31,8 @@ class Patient:
         self.__phone = phone
         self.__dob = dob_verified
         self.__num_dossier = self.__num_dossier_generator()
+        self.__poids = 0
+        self.__taille = 0
 
     @property
     def nom(self) -> str:
@@ -76,3 +78,23 @@ class Patient:
     @property
     def num_dossier(self) -> str:
         return self.__num_dossier
+
+    def mesures(self, poids: float, taille: int) -> None:
+        """
+        Reccupere les mesures du patient
+        :param poids: en Kg (Kilogrammes)
+        :param taille: en cm (Centimetres)
+        :return:
+        """
+        if not str(poids).isnumeric() or not str(taille).isdigit():
+            raise TypeError
+        self.__poids = float(poids)
+        self.__taille = taille
+
+    @property
+    def taille(self) -> int:
+        return self.__taille
+
+    @property
+    def poids(self) -> float:
+        return  self.__poids
