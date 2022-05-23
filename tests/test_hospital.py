@@ -1,16 +1,37 @@
+import random
 import pytest
 
+from src.helpers import *
 from src.doctor import Doctor
 from src.hospital import Hospital
 from src.patient import Patient
 
 
 @pytest.fixture()
-def hospital():
-    return Hospital("advance clinique")
+def hospital(patient, doctor):
+    h = Hospital("advance clinique")
+    for i in range(10):
+        h.add_patient(patient)
+        h.add_doctor(doctor)
+    return h
+
+
+@pytest.fixture()
+def patient():
+    genre = ["m", "f"]
+    return Patient(random_lastname(), random_firstname(), random_lastname(), random_phone_number(),
+                   date_generator(), random.choice(genre))
+
+
+@pytest.fixture()
+def doctor():
+    return Doctor(random_lastname(), random_firstname(), random_firstname(), random_phone_number())
 
 
 class TestHospital:
+    """
+    Test class for hospital
+    """
     def test_hospital_instantiation(self, hospital):
         assert isinstance(hospital, Hospital)
 
@@ -33,3 +54,18 @@ class TestHospital:
     def test_hospitals_doctorslist_is_doctortype(self, hospital):
         assert all(isinstance(doctor, Doctor) for doctor in hospital.doctors) or hospital.doctors == []
 
+    def test_can_add_patient_with_error(self, hospital):
+        with pytest.raises(TypeError):
+            hospital.add_patient("qwetyuiop")
+
+    def test_can_add_patient(self, hospital, patient):
+        hospital.add_patient(patient)
+        assert patient in hospital.patients
+
+    def test_can_add_doctor_with_error(self, hospital):
+        with pytest.raises(TypeError):
+            hospital.add_doctor("qwetyuiop")
+
+    def test_can_add_patient(self, hospital, doctor):
+        hospital.add_doctor(doctor)
+        assert doctor in hospital.doctors
