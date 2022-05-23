@@ -17,8 +17,9 @@ class Doctor:
     __i = 1
 
     def __init__(self, nom: str, prenom: str, postnom: str, phone: str) -> None:
+        #TODO add genre to doctor
         """
-
+        Doctor initialisation
         :param nom:
         :param prenom:
         :param postnom:
@@ -62,7 +63,7 @@ class Doctor:
     @specialization.setter
     def specialization(self, value: [str]) -> None:
         """
-
+        Setter to specialization
         :param value:
         :return:
         """
