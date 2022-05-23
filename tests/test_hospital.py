@@ -22,13 +22,14 @@ class TestHospital:
         assert hospital.nom == "Advance Clinique"
 
     def test_doctors_list(self, hospital):
-        assert isinstance(hospital.doctors, Doctor)
+        assert isinstance(hospital.doctors, list)
 
-    def test_patients_list(self):
-        assert isinstance(hospital.patients, Patient)
+    def test_patients_list(self, hospital):
+        assert isinstance(hospital.patients, list)
 
     def test_hospitals_patientslist_is_patienttype(self, hospital):
-        assert all([patient for patient in hospital.patients if isinstance(patient, Patient)])
+        assert all(isinstance(patient, Patient) for patient in hospital.patients) or hospital.patients == []
 
     def test_hospitals_doctorslist_is_doctortype(self, hospital):
-        assert all([doctor for doctor in hospital.doctors if isinstance(doctor, Doctor)])
+        assert all(isinstance(doctor, Doctor) for doctor in hospital.doctors) or hospital.doctors == []
+
