@@ -31,6 +31,7 @@ class TestHospital:
     """
     Test class for hospital
     """
+
     def test_hospital_instantiation(self, hospital):
         assert isinstance(hospital, Hospital)
 
@@ -76,3 +77,8 @@ class TestHospital:
     def test_can_search_patient_by_identity_with_named_params(self, hospital):
         patients = hospital.find_patient(nom="kasongo", postnom="nyembo", prenom="marc")
         assert all(isinstance(patient, Patient) for patient in patients)
+
+    def test_find_patient_by_num_dossier(self, hospital):
+        hospital.add_patient(Patient("nom", "prenom", "postnom", "+1234567890", "1994-10-17", "m"))
+        patient = hospital.find_patient_by_num_dossier("NM")
+        assert isinstance(patient, Patient) or patient is None

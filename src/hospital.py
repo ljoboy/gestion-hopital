@@ -6,7 +6,7 @@ class Hospital:
     def __init__(self, nom: str) -> None:
         """
         CLass representant un hopital
-        :param nom:
+        :param nom: str
         :return: None
         """
         # TODO test if it's a string in proper manner
@@ -31,7 +31,7 @@ class Hospital:
     def add_patient(self, patient: Patient) -> None:
         """
         Fonction pour ajouter un nouveau patient
-        :param patient:
+        :param patient: Patient
         :return: None
         """
         if not isinstance(patient, Patient):
@@ -41,7 +41,7 @@ class Hospital:
     def add_doctor(self, doctor: Doctor) -> None:
         """
         Fonction qui ajoute un nouveau docteur
-        :param doctor:
+        :param doctor: Doctor
         :return: None
         """
         if not isinstance(doctor, Doctor):
@@ -51,19 +51,27 @@ class Hospital:
     def find_patient(self, nom: str, postnom: str = "", prenom: str = "") -> [Patient]:
         """
         Fonction pour trouver un patient par son nom, prenom ou postnom
-        :param nom:
-        :param postnom:
-        :param prenom:
+        :param nom: str
+        :param postnom: str
+        :param prenom: str
         :return: Patient[]
         """
         nom = nom.strip().upper()
         prenom = prenom.strip().capitalize() if prenom != "" else nom
         postnom = postnom.strip().upper() if postnom != "" else nom
-
         patients = []
-
-        for patient in self.__patients:
+        for patient in self.patients:
             if nom in patient.nom or prenom in patient.prenom or postnom in patient.postnom:
                 patients.append(patient)
-
         return patients
+
+    def find_patient_by_num_dossier(self, num_dossier: str) -> Patient:
+        """
+        Find patient by numero dossier
+        :param num_dossier: str
+        :return: Patient
+        """
+        num_dossier = num_dossier.upper()
+        for patient in self.patients:
+            if num_dossier == patient.num_dossier:
+                return patient
