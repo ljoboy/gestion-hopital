@@ -31,9 +31,9 @@ class Doctor:
         if not str.isalnum(nom) or not str.isalnum(prenom) or not str.isalnum(postnom) \
                 or len(phone) < 10 or not isinstance(tel, re.Match):
             raise TypeError
-        self.__nom = nom
-        self.__prenom = prenom
-        self.__postnom = postnom
+        self.__nom = nom.upper()
+        self.__prenom = prenom.capitalize()
+        self.__postnom = postnom.upper()
         self.__phone = phone
         self.__specialization = []
         self.__matricule = self.__matricule_generator()
@@ -90,3 +90,6 @@ class Doctor:
         mat = str(datetime.datetime.now().year)[-2:]
         mat += self.__nom[0].upper() + self.__postnom[0].upper() + str(self.__i).zfill(3)
         return mat
+
+    def __str__(self):
+        return " ".join(["Dr.", self.nom, self.postnom, self.prenom])

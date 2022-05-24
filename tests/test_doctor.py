@@ -112,6 +112,9 @@ class TestDoctor:
     def test_case07(self, doctor):
         assert [doctor.nom, doctor.prenom, doctor.postnom, doctor.phone] == ["nom", "prenom", "postnom", "+1234567890"]
 
+    def test_doctor_str(self, doctor):
+        assert str(doctor) == 'Dr. NOM POSTNOM Prenom'
+
 
 if __name__ == '__main__':
     pytest.testmod()
