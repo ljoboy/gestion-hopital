@@ -97,4 +97,7 @@ class Patient:
 
     @property
     def poids(self) -> float:
-        return  self.__poids
+        return self.__poids
+
+    def __str__(self) -> str:
+        return " ".join([self.prenom, self.nom, self.postnom])

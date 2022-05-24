@@ -79,7 +79,7 @@ class TestPatient:
     def test_case22_02(self, patient):
         """Test if nom_complet property it's working"""
         assert isinstance(patient.nom_complet, str) and patient.nom_complet == (
-                    patient.nom.upper() + " " + patient.postnom.upper() + " " + patient.prenom.capitalize())
+                patient.nom.upper() + " " + patient.postnom.upper() + " " + patient.prenom.capitalize())
 
     def test_a_numdossier(self, patient):
         """Test if num_dossier it's generated"""
@@ -99,6 +99,9 @@ class TestPatient:
 
     def test_phone_property(self, patient):
         assert patient.phone == "+1234567890"
+
+    def test_patient_str(self, patient):
+        assert str(patient) == "Prenom NOM POSTNOM"
 
 
 if __name__ == '__main__':
