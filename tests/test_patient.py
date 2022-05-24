@@ -103,6 +103,15 @@ class TestPatient:
     def test_patient_str(self, patient):
         assert str(patient) == "Prenom NOM POSTNOM"
 
+    def test_add_patient_plaintes(self, patient):
+        p = "Maux de tête"
+        patient.plaintes = p
+        assert p in patient.plaintes
+
+    def test_add_plaintes_with_error(self, patient):
+        with pytest.raises(TypeError):
+            patient.plaintes = ["Fièvre", "Toux"]
+
 
 if __name__ == '__main__':
     pytest.testmod()

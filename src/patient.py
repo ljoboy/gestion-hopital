@@ -33,6 +33,7 @@ class Patient:
         self.__num_dossier = self.__num_dossier_generator()
         self.__poids = 0
         self.__taille = 0
+        self.__plaintes = []
 
     @property
     def nom(self) -> str:
@@ -98,6 +99,16 @@ class Patient:
     @property
     def poids(self) -> float:
         return self.__poids
+
+    @property
+    def plaintes(self) -> [str]:
+        return self.__plaintes
+
+    @plaintes.setter
+    def plaintes(self, plainte: str) -> None:
+        if not isinstance(plainte, str):
+            raise TypeError
+        self.__plaintes.append(plainte)
 
     def __str__(self) -> str:
         return " ".join([self.prenom, self.nom, self.postnom])
