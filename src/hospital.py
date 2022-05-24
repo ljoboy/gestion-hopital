@@ -47,3 +47,23 @@ class Hospital:
         if not isinstance(doctor, Doctor):
             raise TypeError
         self.__doctors.append(doctor)
+
+    def find_patient(self, nom: str, postnom: str = "", prenom: str = "") -> [Patient]:
+        """
+        Fonction pour trouver un patient par son nom, prenom ou postnom
+        :param nom:
+        :param postnom:
+        :param prenom:
+        :return: Patient[]
+        """
+        nom = nom.strip().upper()
+        prenom = prenom.strip().capitalize() if prenom != "" else nom
+        postnom = postnom.strip().upper() if postnom != "" else nom
+
+        patients = []
+
+        for patient in self.__patients:
+            if nom in patient.nom or prenom in patient.prenom or postnom in patient.postnom:
+                patients.append(patient)
+
+        return patients

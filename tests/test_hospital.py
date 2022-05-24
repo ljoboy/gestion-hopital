@@ -1,4 +1,3 @@
-import random
 import pytest
 
 from src.helpers import *
@@ -69,3 +68,11 @@ class TestHospital:
     def test_can_add_patient(self, hospital, doctor):
         hospital.add_doctor(doctor)
         assert doctor in hospital.doctors
+
+    def test_can_search_patient_by_identity_with_one_params(self, hospital):
+        patients = hospital.find_patient("ilunga")
+        assert all(isinstance(patient, Patient) for patient in patients)
+
+    def test_can_search_patient_by_identity_with_named_params(self, hospital):
+        patients = hospital.find_patient(nom="kasongo", postnom="nyembo", prenom="marc")
+        assert all(isinstance(patient, Patient) for patient in patients)
