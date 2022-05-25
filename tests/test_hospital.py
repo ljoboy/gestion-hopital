@@ -82,3 +82,5 @@ class TestHospital:
         hospital.add_patient(Patient("nom", "prenom", "postnom", "+1234567890", "1994-10-17", "m"))
         patient = hospital.find_patient_by_num_dossier("NM")
         assert isinstance(patient, Patient) or patient is None
+
+    # def test_show_all_patients(self, hospital):

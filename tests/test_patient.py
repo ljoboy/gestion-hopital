@@ -1,6 +1,5 @@
 import datetime
 import random
-
 import pytest
 
 from src.patient import Patient

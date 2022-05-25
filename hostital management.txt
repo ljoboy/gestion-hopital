@@ -8,7 +8,7 @@ Il vous est demandé de créer une application pour les aider dans leurs taches 
  - Afficher tous les patients
  - Afficher tous les docteurs
  ok - Enregistrer plaintes patient (ex: maux de tete, maux de ventre, etc)
- - Enregistrer l'horaire de chaque medecin (pour une semaine)
+ wip - Enregistrer l'horaire de chaque medecin (pour une semaine)
  - Vérifier disponibilité d'un medecin (Ajouter un rendez-vous à son horaire)
  - Afficher les plaintes d'un patient à partir de son numero unique
  - Afficher l'IMC (indice de masse corporel) d'un patient par à partir de son numero [IMC = poids (kg) / taille (m²)].
