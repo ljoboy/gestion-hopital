@@ -84,3 +84,7 @@ class TestHospital:
         assert isinstance(patient, Patient) or patient is None
 
     # def test_show_all_patients(self, hospital):
+
+
+if __name__ == '__main__':
+    pytest.testmod()
