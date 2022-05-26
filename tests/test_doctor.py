@@ -110,7 +110,7 @@ class TestDoctor:
         assert (d1.matricule == '22WT010') or (d1.matricule == '22WT001')
 
     def test_case07(self, doctor):
-        assert [doctor.nom, doctor.prenom, doctor.postnom, doctor.phone] == ["nom", "prenom", "postnom", "+1234567890"]
+        assert [doctor.nom, doctor.prenom, doctor.postnom, doctor.phone] == ["NOM", "Prenom", "POSTNOM", "+1234567890"]
 
     def test_doctor_str(self, doctor):
         assert str(doctor) == 'Dr. NOM POSTNOM Prenom'

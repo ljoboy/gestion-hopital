@@ -1,6 +1,6 @@
 import pytest
 
-from src.helpers import *
+from tests.helpers import *
 from src.doctor import Doctor
 from src.hospital import Hospital
 from src.patient import Patient
@@ -66,7 +66,7 @@ class TestHospital:
         with pytest.raises(TypeError):
             hospital.add_doctor("qwetyuiop")
 
-    def test_can_add_patient(self, hospital, doctor):
+    def test_can_add_doctor(self, hospital, doctor):
         hospital.add_doctor(doctor)
         assert doctor in hospital.doctors
 
