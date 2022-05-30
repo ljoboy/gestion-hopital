@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import IntEnum
 
 
-class Day(Enum):
+class Day(IntEnum):
     """
     Enum representant les jours de la semaine
     LUNDI = 0
@@ -19,3 +19,9 @@ class Day(Enum):
     VENDREDI = 4
     SAMEDI = 5
     DIMANCHE = 6
+
+    # def __init__(self, value: int):
+    #     if not isinstance(value, int):
+    #         raise TypeError
+    #     if not value < 0 or value > 7:
+    #         raise ValueError
