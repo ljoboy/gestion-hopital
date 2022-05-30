@@ -83,8 +83,6 @@ class TestHospital:
         patient = hospital.find_patient_by_num_dossier("NM")
         assert isinstance(patient, Patient) or patient is None
 
-    # def test_show_all_patients(self, hospital):
-
 
 if __name__ == '__main__':
     pytest.testmod()
