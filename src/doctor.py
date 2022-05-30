@@ -1,6 +1,9 @@
 import datetime
 import re
 
+from src.day import Day
+from src.patient import Patient
+
 
 class Doctor:
     """
@@ -17,7 +20,7 @@ class Doctor:
     __i = 1
 
     def __init__(self, nom: str, prenom: str, postnom: str, phone: str) -> None:
-        #TODO add genre to doctor
+        # TODO add genre to doctor
         """
         Doctor initialisation
         :param nom:
@@ -37,7 +40,7 @@ class Doctor:
         self.__phone = phone
         self.__specialization = []
         self.__matricule = self.__matricule_generator()
-
+        self.__horaire = [[], [], [], [], [], [], []]
         self.__class__.__i += 1
 
     @property
@@ -81,6 +84,20 @@ class Doctor:
     @property
     def matricule(self) -> str:
         return self.__matricule
+
+    @property
+    def horaire(self) -> list:
+        return self.__horaire
+
+    @horaire.setter
+    def horaire(self, value: [Patient, int]):
+        patient: Patient = value[0]
+        day: int = value[1]
+        if not isinstance(patient, Patient) or not isinstance(day, int):
+            raise TypeError
+        if  day > 7 or day < 0:
+            raise ValueError
+        self.__horaire[day].append(patient)
 
     def __matricule_generator(self) -> str:
         """

@@ -1,11 +1,19 @@
 import re
 import pytest
+
+from src.day import Day
 from src.doctor import Doctor
+from src.patient import Patient
 
 
 @pytest.fixture()
 def doctor():
     return Doctor("nom", "prenom", "postnom", "+1234567890")
+
+
+@pytest.fixture(autouse=False)
+def patient():
+    return Patient("nom", "prenom", "postnom", "+1234567890", "1994-10-17", "m")
 
 
 class TestDoctor:
@@ -114,6 +122,32 @@ class TestDoctor:
 
     def test_doctor_str(self, doctor):
         assert str(doctor) == 'Dr. NOM POSTNOM Prenom'
+
+    def test_list_horaire_medecin(self, doctor):
+        assert all(isinstance(jour, list) for jour in doctor.horaire)
+
+    def test_horaire_contain_patient(self, doctor):
+        assert all(all(isinstance(patient, Patient) for patient in jour) for jour in doctor.horaire)
+
+    def test_horaire_add_with_error(self, doctor):
+        with pytest.raises(TypeError):
+            doctor.horaire = "Just a test"
+
+    def test_horaire_add_with_error2(self, doctor):
+        with pytest.raises(TypeError):
+            doctor.horaire = [1, 2]
+
+    def test_horaire_add_with_error3(self, doctor, patient):
+        with pytest.raises(TypeError):
+            doctor.horaire = patient
+
+    def test_horaire_add_with_error4(self, doctor, patient):
+        with pytest.raises(ValueError):
+            doctor.horaire = [patient, 8]
+
+    def test_add_horaire_no_error(self, doctor, patient):
+        doctor.horaire = [patient, Day.MARDI.value]
+        assert patient in doctor.horaire[Day.MARDI.value]
 
 
 if __name__ == '__main__':
